@@ -30,6 +30,7 @@
 
 # Create an notepad and save it as html in "wwwrooot"
 - Get the public IP and access the page
+- You will have to save it as UTC and change file type to "All documents"
 
 
 # Use case: Connect to the VM via its private IP address from personal machine via a VPN connection
@@ -76,11 +77,28 @@
 
 
 # Configure the point-to-site configuration on Azure Portal
-Virtual network gateway > point-to-site configuration > configure now
+- Virtual network gateway > point-to-site configuration > configure now
 - Add an address pool - an IP address will be assigned to the client machine trying to establish a vpn connection
-- Select tunnel type
-- Azure certificate as authentication type
-- Upload the root certificate's data onto public certificate data
+- Select tunnel type > Azure certificate as authentication type
+- Export VPNRoot onto the desktop > don't export the private key > finish 
+- Go to the Vnet gateway > point-to-site configuration > upload the root certificate's data onto public certificate data on the virtual network gateway
 - The root certificate is part of the virtual network gateway and the client cert is on the client's workstation
 - The client cert will be authenticated against the root certificate on the gateway 
 - Anyone who is trying to establish a connection to the virtual network gateway must have the client certificate installed
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170839871-bb5dbe05-c952-4703-ab4e-a72bafa087b9.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+
+# Open up root certificate that was exported and copy the data onto the vnet gateway
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170839940-14f69f2d-b6ed-41e6-9054-c5e79eb9378b.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+
+
