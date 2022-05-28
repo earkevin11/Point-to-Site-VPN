@@ -115,5 +115,10 @@
 <p/> 
 
 # Disassociate the public IP address and download the VPN client
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170840179-79b4f068-19d5-442a-8329-e5f0eac62143.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
 
 
