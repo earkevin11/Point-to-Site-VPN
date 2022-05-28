@@ -73,7 +73,13 @@
 # Use azure powershell to create a self-signed root certificate then create the client certificate
 - root certificate -> client certificate
 - install client certificate on machine that will establish the point-to-site VPN connection
+- To create the certificates, you may have to copy and paste onto notepad first and then paste it into powershell
+- Access the certificates via "Manage user certificates" on Windows 
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170840046-a5c04e16-3b59-48cb-b0f9-e8cd7b0ffd97.png" height="65%" width="65%" alt="vnet gateway"/>
 
+<p/> 
 
 
 # Configure the point-to-site configuration on Azure Portal
@@ -100,5 +106,14 @@
 
 <p/> 
 
+# Root certificate data
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170839981-97c4917d-959f-4f7a-81b9-a9afc52fa365.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+# Disassociate the public IP address and download the VPN client
 
 
