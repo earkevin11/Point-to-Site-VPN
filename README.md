@@ -58,8 +58,17 @@
 
 <p align="center">
   
-<img src="https://user-images.githubusercontent.com/104326475/170837970-efec7ccf-c427-4bd3-807d-fed4d3fc63ee.png" height="100%" width="100%" alt="application gateway"/>
+<img src="https://user-images.githubusercontent.com/104326475/170837970-efec7ccf-c427-4bd3-807d-fed4d3fc63ee.png" height="65%" width="65%" alt="application gateway"/>
 
 <p/> 
 
+# Set up certificates for authentication
+- Ensure that certificates are installed on client's machines as a form of authentication
+- Not just any machine can connect to an azure virtual network.
+- Install the certificates
+- Create a client certificate from a root certificate
+- Enterprises will have a enterprise CA authority
 
+# Use azure powershell to create a self-signed root certificate then create the client certificate
+- root certificate -> client certificate
+- install client certificate on machine that will establish the point-to-site VPN connection
