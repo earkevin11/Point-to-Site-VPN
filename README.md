@@ -121,4 +121,12 @@
 
 <p/> 
 
+# VPN Client
+- This client needs to be installed one very single machine that wants to establish a point-to-site VPN connection onto the Azure Virtual Network
+- Two things are needed: The VPN Client and the Certificate
 
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170845491-61de7a47-61da-4e3d-9b21-68ed17c50de4.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
