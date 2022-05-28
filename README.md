@@ -72,3 +72,15 @@
 # Use azure powershell to create a self-signed root certificate then create the client certificate
 - root certificate -> client certificate
 - install client certificate on machine that will establish the point-to-site VPN connection
+
+
+
+# Configure the point-to-site configuration on Azure Portal
+Virtual network gateway > point-to-site configuration > configure now
+- Add an address pool - an IP address will be assigned to the client machine trying to establish a vpn connection
+- Select tunnel type
+- Azure certificate as authentication type
+- Upload the root certificate's data onto public certificate data
+- The root certificate is part of the virtual network gateway and the client cert is on the client's workstation
+- The client cert will be authenticated against the root certificate on the gateway 
+- Anyone who is trying to establish a connection to the virtual network gateway must have the client certificate installed
