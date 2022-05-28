@@ -44,9 +44,22 @@
 - Select the virtual network > subnets > add gateway subnet 
 - Note, a Virtual Network can only have one gateway subnet
 
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170837802-71f607c4-4fa6-4019-b500-7483e4a13651.png" height="100%" width="100%" alt="application gateway"/>
+
+<p/> 
+
 # Create Virtual Network Gateway
 - Link the created network gateway to the azure vnet
 - Must create a public IP address
 - Bandwith is important because it will dictate how much traffic can flow via the vnet gateway onto the network
 - The higher the bandwidth, the more traffic can flow from client via the gateway onto the network
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170837970-efec7ccf-c427-4bd3-807d-fed4d3fc63ee.png" height="100%" width="100%" alt="application gateway"/>
+
+<p/> 
+
 
