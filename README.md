@@ -41,25 +41,35 @@
 - Gateway subnet must be EMPTY and VMs in the gateway subnet are configured with the VPN gateway settings
 - Gateway subnet must be configured with /29, but Microsoft recommends /27, /26
 
-# Add a gateway subnet
-- Select the virtual network > subnets > add gateway subnet 
-- Note, a Virtual Network can only have one gateway subnet
+# Azure VPN is a managed service
 
 <p align="center">
   
-<img src="https://user-images.githubusercontent.com/104326475/170837802-71f607c4-4fa6-4019-b500-7483e4a13651.png" height="100%" width="100%" alt="application gateway"/>
+<img src="https://user-images.githubusercontent.com/104326475/170847096-8df81211-71e7-4ac2-85cc-6815b0650e52.png" height="100%" width="100%" alt="vnet gateway"/>
+
+
+
+
+# Add a gateway subnet (must be empty)
+- Select the virtual network > subnets > add gateway subnet 
+- Note, a Virtual Network can only have one gateway subnet
+- Gateway subnet will host the gateway VM's and services
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170837802-71f607c4-4fa6-4019-b500-7483e4a13651.png" height="100%" width="100%" alt="vnet gateway"/>
 
 <p/> 
 
 # Create Virtual Network Gateway
-- Link the created network gateway to the azure vnet
+- Link the created virtual network gateway to the azure vnet, which also connects the gateway subnet.
 - Must create a public IP address
 - Bandwith is important because it will dictate how much traffic can flow via the vnet gateway onto the network
 - The higher the bandwidth, the more traffic can flow from client via the gateway onto the network
 
 <p align="center">
   
-<img src="https://user-images.githubusercontent.com/104326475/170837970-efec7ccf-c427-4bd3-807d-fed4d3fc63ee.png" height="65%" width="65%" alt="application gateway"/>
+<img src="https://user-images.githubusercontent.com/104326475/170837970-efec7ccf-c427-4bd3-807d-fed4d3fc63ee.png" height="65%" width="65%" alt="vnet gateway"/>
 
 <p/> 
 
@@ -75,6 +85,22 @@
 - install client certificate on machine that will establish the point-to-site VPN connection
 - To create the certificates, you may have to copy and paste onto notepad first and then paste it into powershell
 - Access the certificates via "Manage user certificates" on Windows 
+
+# Code for root 
+<h2> 
+$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+-Subject "CN=VPNRoot" -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign 
+
+# Code for client certificate
+New-SelfSignedCertificate -Type Custom -DnsName VPNCert -KeySpec Signature `
+-Subject "CN=VPNCert" -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation "Cert:\CurrentUser\My" `
+-Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+</h2>
+
 <p align="center">
   
 <img src="https://user-images.githubusercontent.com/104326475/170840046-a5c04e16-3b59-48cb-b0f9-e8cd7b0ffd97.png" height="65%" width="65%" alt="vnet gateway"/>
@@ -128,5 +154,28 @@
 <p align="center">
   
 <img src="https://user-images.githubusercontent.com/104326475/170845491-61de7a47-61da-4e3d-9b21-68ed17c50de4.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+# Run the VPN client
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170845562-d4c90fc7-ac48-4cce-ab16-70a3a1e94fca.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+# After successfully connecting to the VPN, navigate to the point-to-site vm's private IP
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170845680-38f872a1-43ae-43e5-8b90-9f35fef49e37.png" height="65%" width="65%" alt="vnet gateway"/>
+
+<p/> 
+
+# Successfully connected to the vm via the <em> private IP address </em> using a point to site vpn connection
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170845790-0ac2418a-9db7-45ed-a864-1a66841c2358.png" height="65%" width="65%" alt="vnet gateway"/>
 
 <p/> 
